@@ -70,4 +70,4 @@ jobs:
         provenance: false
         push: true
         tags: |
-          ajmusgrove/helloweb:latest
+          docker.io/helloweb:latest
