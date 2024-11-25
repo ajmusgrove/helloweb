@@ -71,4 +71,4 @@ jobs:
         context: .
         push: true
         tags:
-        - ajmusgrove/helloweb:latest
+          - ajmusgrove/helloweb:latest
