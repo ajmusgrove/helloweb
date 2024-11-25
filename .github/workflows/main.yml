@@ -70,5 +70,5 @@ jobs:
       with:
         context: .
         push: true
-        tags:
-          - ajmusgrove/helloweb:latest
+        tags: |
+          ajmusgrove/helloweb:latest
