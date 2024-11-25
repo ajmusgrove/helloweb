@@ -48,6 +48,6 @@ jobs:
 
     - name: Lint with flake8
       run: |
-        flake8 bookstore.py --count --show-source --statistics --max-line-length=127
+        flake8 helloweb.py --count --show-source --statistics --max-line-length=127
     - name: Lint with pylint
-      run: pylint bookstore.py
+      run: pylint helloweb.py
