@@ -62,7 +62,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker Image
-      id: build_push
+      id: build_docker
       uses: docker/build-push-action@v6
       with:
         context: .
@@ -72,5 +72,24 @@ jobs:
         tags: |
           ajmusgrove/helloweb:latest
 
-    - name: Push Docer Image
-      run: docker push ajmusgrove/helloweb:latest
+    - name: Trivy Vulnerability Scan
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        image-ref: 'ajmusgrove/helloweb:latest'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os, library'
+        severity: 'CRITICAL,HGH'
+
+    - name: Push Docker Image
+      id: push_docker
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./Dockerfile
+        provenance: false
+        push: true
+        tags: |
+          ajmusgrove/helloweb:latest
+
