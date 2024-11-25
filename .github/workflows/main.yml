@@ -65,7 +65,9 @@ jobs:
       id: build_push
       uses: docker/build-push-action@v6
       with:
+        context: .
         file: ./Dockerfile
+        provenance: false
         push: true
         tags: |
           ajmusgrove/helloweb:latest

@@ -8,4 +8,4 @@ COPY . .
 
 EXPOSE 8086
 
-CMD ["python", "helloweb.py" ]
+CMD ["python3", "helloweb.py" ]
