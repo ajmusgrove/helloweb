@@ -61,13 +61,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push to Docker
+    - name: Build Docker Image
       id: build_push
       uses: docker/build-push-action@v6
       with:
         context: .
         file: ./Dockerfile
         provenance: false
-        push: true
+        push: false
         tags: |
           ajmusgrove/helloweb:latest
+
+    - name: Push Docer Image
+      run: docker push ajmusgrove/helloweb:latest
